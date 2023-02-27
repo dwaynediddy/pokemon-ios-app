@@ -23,7 +23,11 @@ struct ContentView: View {
                         }
                     }
                 }
+                .animation(.easeIn(duration: 0.3), value: vm.filteredPokemon.count)
+                .navigationTitle("Pokedex")
+                .navigationBarTitleDisplayMode(.inline)
             }
+            .searchable(text: $vm.searchText)
         }
         .environmentObject(vm)
     }
