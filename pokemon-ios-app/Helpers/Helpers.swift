@@ -10,7 +10,7 @@ import Foundation
 extension Bundle {
     func decode<T:Decodable>(file: String) -> T {
         guard let url = self.url(forResource: file, withExtension: nil) else {
-            fatalError("could not fine \(file) in bundle")
+            fatalError("could not find \(file) in bundle")
         }
         guard let data = try? Data(contentsOf: url) else {
             fatalError(" could not load \(file) from bundle")
@@ -36,7 +36,7 @@ extension Bundle {
             }
             do {
                 let serverData = try JSONDecoder().decode(T.self, from: data)
-                completion(serverData)
+                completion((serverData))
             } catch {
                 failure(error)
             }
